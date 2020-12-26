@@ -80,7 +80,7 @@ PARAMS=(
 	# virt-manager libvirt libvirt-daemon-qemu qemu-kvm
 
 	##### i3wm and desktop utilities
-	i3 rofi redshift feh
+	i3 rofi redshift feh brightnessctl
 
 	##### X11 software
 	MozillaFirefox chromium pidgin vlc geeqie transmission-gtk gimp inkscape okular
