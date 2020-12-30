@@ -61,11 +61,11 @@ PARAMS=(
 	##### general CLI tools
 	tmux iotop htop unrar unzip p7zip aria2 rsync neofetch tumbleweed-cli
 
-	##### bluetooth, networking, audio
-	bluez blueman NetworkManager NetworkManager-applet pulseaudio pavucontrol
+	##### bluetooth, networking, audio, polkit
+	bluez blueman NetworkManager NetworkManager-applet pulseaudio pavucontrol polkit polkit-gnome
 
 	##### openGL, vulkan and X11 utilities
-	vulkan-tools Mesa-demo-x arandr xdotool xwd
+	vulkan-tools Mesa-demo-x arandr xdotool xwd xev
 
 	##### fonts
 	ubuntu-fonts
@@ -74,7 +74,7 @@ PARAMS=(
 	# openssh nginx
 
 	##### development tools
-	vim emacs-x11 git Catch2-devel clang colordiff go1.15 rust sbcl cmake clojure nodejs14 npm14 libvterm0 libvterm-devel
+	vim emacs-x11 git Catch2-devel clang colordiff go1.15 rust sbcl cmake clojure nodejs12 npm12 libvterm0 libvterm-devel
 
 	##### virtualisation
 	# virt-manager libvirt libvirt-daemon-qemu qemu-kvm
