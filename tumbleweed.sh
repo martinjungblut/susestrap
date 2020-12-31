@@ -74,16 +74,21 @@ PARAMS=(
 	# openssh nginx
 
 	##### development tools
-	vim emacs-x11 git Catch2-devel clang colordiff go1.15 rust sbcl cmake clojure nodejs12 npm12 libvterm0 libvterm-devel
+	vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
+	clang go1.15 rust sbcl clojure nodejs12 npm12 nasm yasm
 
 	##### virtualisation
 	# virt-manager libvirt libvirt-daemon-qemu qemu-kvm
+
+	##### docker
+	# docker python3-docker-compose
 
 	##### i3wm and desktop utilities
 	i3 rofi redshift feh brightnessctl
 
 	##### X11 software
-	MozillaFirefox chromium pidgin vlc geeqie transmission-gtk gimp inkscape okular
+	MozillaFirefox pidgin vlc geeqie transmission-gtk gimp inkscape okular
+	chromium chromium-plugin-widevinecdm chromium-ffmpeg-extra
 
 	##### gaming
 	gzdoom wine wine-mono wine-gecko winetricks retroarch steam steamtricks
