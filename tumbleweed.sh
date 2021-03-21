@@ -19,8 +19,8 @@ target=$(realpath $1)
 
 if [[ -d $target/dev ]]; then
     echo "Target directory already contains either a partial or full installation: $target"
-	echo "Sleeping for 10 seconds... Press Ctrl+C to abort execution."
-	sleep 10
+    echo "Sleeping for 10 seconds... Press Ctrl+C to abort execution."
+    sleep 10
 fi
 
 mkdir -p $target/dev
@@ -32,13 +32,12 @@ mount -t sysfs sysfs $target/sys
 mount -t proc proc $target/proc
 
 echo "Enabling repositories"
-zypper -R $target addrepo --refresh -p 90 "https://download.nvidia.com/opensuse/tumbleweed" "nvidia"
+zypper -R $target addrepo --refresh -p 90 --disable "http://dl.google.com/linux/chrome/rpm/stable/x86_64"      "google-chrome"
+zypper -R $target addrepo --refresh -p 90 --disable "https://download.nvidia.com/opensuse/tumbleweed"          "nvidia"
 zypper -R $target addrepo --refresh -p 90 "http://ftp.gwdg.de/pub/linux/misc/packman/suse/openSUSE_Tumbleweed" "packman"
-zypper -R $target addrepo --refresh --disable "http://download.opensuse.org/tumbleweed/repo/non-oss" "default-repo-non-oss"
-zypper -R $target addrepo --refresh --disable "http://download.opensuse.org/tumbleweed/repo/oss" "default-repo-oss"
-zypper -R $target addrepo --refresh "http://download.opensuse.org/update/tumbleweed" "default-repo-update"
-zypper -R $target addrepo --refresh "http://opensuse.c3sl.ufpr.br/tumbleweed/repo/non-oss" "ufpr-repo-non-oss"
-zypper -R $target addrepo --refresh "http://opensuse.c3sl.ufpr.br/tumbleweed/repo/oss" "ufpr-repo-oss"
+zypper -R $target addrepo --refresh "http://download.opensuse.org/tumbleweed/repo/non-oss"                     "default-repo-non-oss"
+zypper -R $target addrepo --refresh "http://download.opensuse.org/tumbleweed/repo/oss"                         "default-repo-oss"
+zypper -R $target addrepo --refresh "http://download.opensuse.org/update/tumbleweed"                           "default-repo-update"
 zypper lr -Pu
 
 echo "Refreshing repositories"
@@ -51,47 +50,50 @@ echo "Installing base patterns"
 zypper -R $target install -t pattern base enhanced_base console 32bit devel_basis devel_python3 x11 basic_desktop
 
 PARAMS=(
-	##### kernel and bootloader
-	kernel-default kernel-default-devel kernel-devel kernel-firmware-all purge-kernels-service
-	grub2 grub2-i386-pc grub2-x86_64-efi
+    ##### kernel and bootloader
+    kernel-default kernel-default-devel kernel-devel kernel-firmware-all purge-kernels-service
+    grub2 grub2-i386-pc grub2-x86_64-efi
 
-	##### filesystem utilities
-	xfsprogs btrfsprogs ntfs-3g ntfsprogs dosfstools cryptsetup
+    ##### filesystem utilities
+    xfsprogs btrfsprogs ntfs-3g ntfsprogs dosfstools cryptsetup
 
-	##### general CLI tools
-	tmux iotop htop unrar unzip p7zip aria2 rsync neofetch tumbleweed-cli
+    ##### general CLI tools
+    fish tmux iotop htop unrar unzip p7zip aria2 rsync neofetch tumbleweed-cli
 
-	##### bluetooth, networking, audio, polkit
-	bluez blueman NetworkManager NetworkManager-applet pulseaudio pavucontrol polkit polkit-gnome
+    ##### bluetooth, networking, audio, polkit
+    bluez blueman NetworkManager NetworkManager-applet pulseaudio pavucontrol polkit polkit-gnome
 
-	##### openGL, vulkan and X11 utilities
-	vulkan-tools Mesa-demo-x arandr xdotool xwd xev
+    ##### openGL, vulkan and X11 utilities
+    vulkan-tools Mesa-demo-x arandr xdotool xwd xev
 
-	##### fonts
-	ubuntu-fonts
+    ##### fonts
+    ubuntu-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts
 
-	##### additional services
-	# openssh nginx
+    ##### additional services
+    # openssh nginx
 
-	##### development tools
-	vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
-	clang go1.15 rust sbcl clojure nodejs12 npm12 nasm yasm
+    ##### development tools
+    vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
+    clang go1.16 rust sbcl clojure nodejs12 npm12 nasm yasm
 
-	##### virtualisation
-	# virt-manager libvirt libvirt-daemon-qemu qemu-kvm
+    ##### virtualisation
+    # virt-manager libvirt libvirt-daemon-qemu qemu-kvm
 
-	##### docker
-	# docker python3-docker-compose
+    ##### docker
+    # docker python3-docker-compose
 
-	##### i3wm and desktop utilities
-	i3 rofi redshift feh brightnessctl
+    ##### i3wm and desktop utilities
+    i3 rofi redshift feh brightnessctl
 
-	##### X11 software
-	MozillaFirefox pidgin vlc geeqie transmission-gtk gimp inkscape okular
-	chromium chromium-plugin-widevinecdm chromium-ffmpeg-extra
+    ##### X11 software
+    MozillaFirefox pidgin vlc geeqie transmission-gtk gimp inkscape okular
 
-	##### gaming
-	gzdoom wine wine-mono wine-gecko winetricks retroarch steam steamtricks
+    ##### chromium/chrome - repository must be enabled for chrome
+    # chromium chromium-plugin-widevinecdm chromium-ffmpeg-extra
+    # google-chrome-stable
+
+    ##### gaming
+    gzdoom wine wine-mono wine-gecko winetricks retroarch steam steamtricks
 )
 echo "Installing base packages"
 zypper -R $target install ${PARAMS[@]}
