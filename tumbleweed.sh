@@ -73,7 +73,7 @@ PARAMS=(
     # openssh nginx
 
     ##### development tools
-    vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
+    ack vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
     clang go1.16 rust sbcl clojure nodejs15 npm15 nasm yasm
 
     ##### virtualisation
