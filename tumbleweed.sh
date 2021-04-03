@@ -47,7 +47,7 @@ echo "Adding locks"
 zypper -R $target addlock "*yast*" "*packagekit*" "*PackageKit*" "*plymouth*" "postfix"
 
 echo "Installing base patterns"
-zypper -R $target install -t pattern base enhanced_base console 32bit devel_basis devel_python3 x11 basic_desktop
+zypper --non-interactive -R $target install -t pattern base enhanced_base console 32bit devel_basis devel_python3 x11 basic_desktop
 
 PARAMS=(
     ##### kernel and bootloader
@@ -96,7 +96,7 @@ PARAMS=(
     gzdoom wine wine-mono wine-gecko winetricks retroarch steam steamtricks
 )
 echo "Installing base packages"
-zypper -R $target install ${PARAMS[@]}
+zypper --non-interactive -R $target install ${PARAMS[@]}
 
 echo "Setting up hostname, locale.conf, vconsole.conf and timezone"
 echo $2 > $target/etc/hostname
