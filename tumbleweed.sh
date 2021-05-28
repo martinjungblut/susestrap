@@ -46,7 +46,7 @@ echo ">>> Refreshing repositories"
 zypper -R $target ref
 
 echo ">>> Adding locks"
-zypper -R $target addlock "*yast*" "*packagekit*" "*PackageKit*" "*plymouth*" "postfix"
+zypper -R $target addlock "*yast*" "*packagekit*" "*PackageKit*" "*plymouth*" "postfix" "pulseaudio"
 
 echo ">>> Installing base patterns"
 zypper --non-interactive -R $target install -t pattern base enhanced_base console 32bit devel_basis devel_python3 x11 basic_desktop
@@ -57,26 +57,28 @@ PARAMS=(
     grub2 grub2-i386-pc grub2-x86_64-efi
 
     ##### filesystem utilities
-    xfsprogs btrfsprogs ntfs-3g ntfsprogs dosfstools cryptsetup
+    xfsprogs btrfsprogs ntfs-3g ntfsprogs dosfstools exfatprogs e2fsprogs cryptsetup
 
     ##### general CLI tools
-    fish tmux iotop htop unrar unzip p7zip aria2 rsync neofetch tumbleweed-cli
+    fish tmux iotop htop unrar unzip p7zip aria2 rsync neofetch youtube-dl
 
     ##### bluetooth, networking, audio, polkit
-    bluez blueman NetworkManager NetworkManager-applet pulseaudio pavucontrol polkit polkit-gnome
+    bluez blueman NetworkManager NetworkManager-applet polkit polkit-gnome
+	pipewire pipewire-modules pipewire-pulseaudio pavucontrol
 
     ##### openGL, vulkan and X11 utilities
-    vulkan-tools Mesa-demo-x arandr xdotool xwd xev
+    vulkan-tools Mesa-demo-x arandr xdotool xwd xev lxterminal
 
     ##### fonts
     ubuntu-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts
 
     ##### additional services
+	chrony
     # openssh nginx
 
     ##### development tools
     ack vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
-    clang go1.16 rust sbcl clojure nodejs15 npm15 nasm yasm
+    clang go1.16 rust sbcl clojure nodejs16 npm16 nasm yasm gdb
 
     ##### virtualisation
     # virt-manager libvirt libvirt-daemon-qemu qemu-kvm
@@ -95,7 +97,7 @@ PARAMS=(
     # google-chrome-stable
 
     ##### gaming
-    gzdoom wine wine-mono wine-gecko winetricks lutris retroarch steam steamtricks
+    # gzdoom wine wine-mono wine-gecko winetricks lutris retroarch steam steamtricks
 )
 echo ">>> Installing base packages"
 zypper --non-interactive -R $target install ${PARAMS[@]}
