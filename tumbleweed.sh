@@ -64,7 +64,7 @@ PARAMS=(
 
     ##### bluetooth, networking, audio, polkit
     bluez blueman NetworkManager NetworkManager-applet polkit polkit-gnome
-	pipewire pipewire-modules pipewire-pulseaudio pavucontrol
+    pipewire pipewire-modules pipewire-pulseaudio pavucontrol
 
     ##### openGL, vulkan and X11 utilities
     vulkan-tools Mesa-demo-x arandr xdotool xwd xev lxterminal
@@ -73,7 +73,7 @@ PARAMS=(
     ubuntu-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts
 
     ##### additional services
-	chrony
+    chrony
     # openssh nginx
 
     ##### development tools
