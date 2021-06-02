@@ -78,7 +78,7 @@ PARAMS=(
 
     ##### development tools
     ack vim emacs-x11 git Catch2-devel colordiff cmake libvterm0 libvterm-devel
-    clang go1.16 rust sbcl clojure nodejs16 npm16 nasm yasm gdb
+    clang go1.16 rust sbcl clojure nodejs16 npm16 nasm yasm gdb entr
 
     ##### virtualisation
     # virt-manager libvirt libvirt-daemon-qemu qemu-kvm
