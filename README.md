@@ -1,7 +1,10 @@
 # susestrap
 
 Bootstrap openSUSE systems for faster and more customisable installations.  
-Currently only openSUSE Tumbleweed is supported.
+Currently openSUSE Tumbleweed and Leap 15.3 are supported. The supported architecture is x86_64.
+
+openSUSE Tumbleweed, in this case, is geared towards desktop usage.  
+openSUSE Leap 15.3 is supported as a very minimal install, to be built upon, similar to bare-bones Arch Linux installs.  
 
 > This tool requires a working installation of [`zypper`](https://github.com/openSUSE/zypper). openSUSE and SLE systems naturally come with it preinstalled.
 
@@ -13,7 +16,9 @@ Currently only openSUSE Tumbleweed is supported.
 
 Create your partitions, mount your install filesystems, clone this repository, then run:
 
-`bash tumbleweed.sh <target_directory> <target_hostname>`
+`bash tumbleweed.sh <target_directory> <target_hostname>`  
+or  
+`bash tinyleap.sh <target_directory> <target_hostname>`  
 
 Where these values are:
 
